@@ -1,0 +1,16 @@
+Name: BsFlow
+Version: 0.1
+Synopsis: A library about Foo and Bar.
+Authors: Me <me@myhost.com>
+License: LGPL with OCaml linking exception
+
+Description: Generate flowtype decls for bs-compiled files.
+
+OASISFormat: 0.4
+BuildTools: ocamlbuild
+BuildDepends: compiler-libs.common, str
+Plugins: META (0.4), DevFiles (0.4)
+
+Executable "bs_flow"
+  Path: src
+  MainIs: bs_flow.ml
