@@ -8,9 +8,9 @@ type state = {
   mutable used_types: string list;
   mutable type_ids: id SMap.t;
   mutable val_ids: id SMap.t;
-  
+
   mutable decls: decl list;
-  
+
   mutable curr_tvars: int list option;
 }
 
@@ -39,9 +39,9 @@ let rec print_path s path =
   | Path.Papply _ -> "Dunno_what_Papply_is"
 
 let print_tvar id = "TVAR_" ^ (string_of_int id)
-  
+
 let rec p_sigs s sigs = List.iter (p_sig s) sigs
-  
+
 and p_sig s = Types.(function
   | Types.Sig_value (id, val_desc) ->
     let decl_name = get_val_id s (Ident.name id) in
@@ -106,23 +106,15 @@ and p_type_expr s type_expr =
         s.curr_tvars <- Some [];
         let decl_name = get_type_id s type_name in
         let (decl_type, tvars) =
-          try
-            (* let type_decl = Env.find_type path s.env in
-            let decl_type = p_type_decl s type_decl in
-            let tvars = List.map (fun t -> t.Types.id) type_decl.Types.type_params in
-            (decl_type, tvars) *)
-            failwith "I'm tilted as fuck"
-          with ex ->
-            (match Flow_env.get_type s.env path  with
-            | Some type_decl ->
-                let decl_type = p_type_decl s type_decl in
-                let tvars = List.map (fun t -> t.Types.id) type_decl.Types.type_params in
-                (decl_type, tvars)
-            | None ->
-                let decl_type = p_any s (print_path s path) in
-                let tvars = List.mapi (fun i _ -> i) tl in
-                (decl_type, tvars)
-            )
+          match Flow_env.get_type s.env path  with
+          | Some type_decl ->
+              let decl_type = p_type_decl s type_decl in
+              let tvars = List.map (fun t -> t.Types.id) type_decl.Types.type_params in
+              (decl_type, tvars)
+          | None ->
+              let decl_type = p_any s (print_path s path) in
+              let tvars = List.mapi (fun i _ -> i) tl in
+              (decl_type, tvars)
         in
         s.curr_tvars <- prev_tvars;
         let decl = Decl_type (tvars, {decl_name; decl_type}) in
@@ -163,7 +155,7 @@ and p_arrow s t =
     else []
   in
   T_fun {func_tvars; func_args; func_ret}
-  
+
 and p_js_obj s t =
   let open Types in
   let rec loop t acc =

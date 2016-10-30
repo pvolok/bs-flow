@@ -1,2 +1,2 @@
 bsc -bs-main main.ml -c
-../main.byte util.cmi main.cmi
+../bs_flow.byte util.cmi main.cmi

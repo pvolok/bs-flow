@@ -2,37 +2,37 @@
 
 declare export var tuple: [string, number, number, 0 | 1, 0 | 1];
 
-type Aliased__t = /* Aliased__t */any
+type Aliased__t = /* Aliased__t */any;
 
 declare export var aliased: Aliased__t;
 
-type Mod__t = string
+type Mod__t = string;
 
 declare export var from_mod: Mod__t;
 
 declare export var js_obj: {id: number, name: string};
 
-type rec_t = /* Type_record */any
+type rec_t = /* Type_record */any;
 
 declare export var record: rec_t;
 
-type obj_t = /* Tobject */any
+type obj_t = /* Tobject */any;
 
 declare export var obj_arg: (p0: obj_t) => void;
 
 declare export var arr: Array<number>;
 
-type Util__t = {id: number}
+type Util__t = {id: number};
 
 declare export var from_util: (p0: Util__t) => void;
 
-type tt$0 = number
+type tt$0 = number;
 
 declare export var tt: tt$0;
 
 declare export var iter: <TVAR__64>(p0: Array<TVAR__64>, p1: (p0: TVAR__64) => void) => void;
 
-type pair$0<TVAR__67> = [TVAR__67, TVAR__67]
+type pair$0<TVAR__67> = [TVAR__67, TVAR__67];
 
 declare export var pair: <TVAR__71>(p0: pair$0<TVAR__71>) => void;
 

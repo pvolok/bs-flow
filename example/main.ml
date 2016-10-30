@@ -10,7 +10,7 @@ let aliased: Aliased.t = ""
 let from_mod: Mod.t = ""
 
 let js_obj = [%bs.obj { name = "nam"; id = 2 }]
-  
+
 type rec_t = { name: string; id: int; }
 
 let record = { name = "rec"; id = 1; }

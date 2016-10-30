@@ -39,7 +39,7 @@ let rec print_type = function
   | T_tuple types ->
     let types_str = types |> List.map print_type |> String.concat ", " in
     "[" ^ types_str ^ "]"
-    
+
 let print_decl decl =
   match decl with
   | Decl_type (tvars, desc) ->
